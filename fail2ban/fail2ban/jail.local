@@ -1,0 +1,21 @@
+[sshd]
+backend=systemd
+enabled=true
+
+[wordpress]
+enabled = true
+filter = wordpress
+action = iptables-multiport[name=Wordpress, port="http,https"]
+logpath = /var/log/nginx/access.log
+bantime = 3600
+findtime = 600
+maxretry = 5
+
+[adminer]
+enabled = true
+filter = adminer
+action = iptables-multiport[name=Adminer, port="http,https"]
+logpath = /var/log/nginx/adminer.access.log
+bantime = 3600
+findtime = 600
+maxretry = 3
